@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MyAccounts</string>
+    <string name="etName">Enter a name</string>
+    <string name="etPassword">Enter a password</string>
+    <string name="btnSubmit">Submit</string>
+    <string name="btnGoSubmit">Go Submit</string>
+</resources>
