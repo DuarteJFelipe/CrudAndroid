@@ -10,13 +10,14 @@ import com.example.myaccounts.db.DbAccount;
 
 public class AddAccountActivity extends AppCompatActivity {
 
-    private EditText etName, etPassword;
+    private EditText etName, etPassword, etPlatform;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_account);
 
+        etPlatform = findViewById(R.id.txtPlatform);
         etName = findViewById(R.id.txtName);
         etPassword = findViewById(R.id.txtPassword);
 
@@ -24,18 +25,23 @@ public class AddAccountActivity extends AppCompatActivity {
     }
 
     private void submit() {
-        DbAccount db = new DbAccount(this);
-        long id = db.insertAccount(etName.getText().toString(), etPassword.getText().toString());
+        if (etPlatform.getText().toString().isEmpty() || etName.getText().toString().isEmpty() || etPassword.getText().toString().isEmpty()){
+            Toast.makeText(this, "fill in the fields", Toast.LENGTH_SHORT).show();
+        }else {
+            DbAccount db = new DbAccount(this);
+            long id = db.insertAccount(etPlatform.getText().toString(), etName.getText().toString(), etPassword.getText().toString());
 
-        if (id != -1) {
-            Toast.makeText(this, "Saved account " + id, Toast.LENGTH_SHORT).show();
+            if (id != -1) {
+                Toast.makeText(this, "Saved account", Toast.LENGTH_SHORT).show();
+            }
+
+            clearInputs();
         }
-
-        clearInputs();
     }
 
     private void clearInputs() {
         etName.setText("");
         etPassword.setText("");
+        etPlatform.setText("");
     }
 }

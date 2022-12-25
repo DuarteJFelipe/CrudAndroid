@@ -11,6 +11,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public static final int DATABASE_VERSION = 1;
     public static final String DATABASE_NAME = "MyAccounts.db";
     public static final String TABLE_ACCOUNT = "accounts";
+    public static final String ACCOUNT_PLATFORM = "platform";
     public static final String ACCOUNT_NAME = "name";
     public static final String ACCOUNT_PASSWORD = "password";
 
@@ -22,6 +23,7 @@ public class DbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         db.execSQL("create table " + TABLE_ACCOUNT + "(" +
                 "id integer primary key autoincrement," +
+                ACCOUNT_PLATFORM + " text," +
                 ACCOUNT_NAME + " text," +
                 ACCOUNT_PASSWORD + " text)");
     }

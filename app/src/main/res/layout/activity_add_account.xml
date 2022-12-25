@@ -9,10 +9,19 @@
     tools:context=".AddAccountActivity">
 
     <EditText
-        android:id="@+id/txtName"
+        android:id="@+id/txtPlatform"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="100dp"
+        android:ems="10"
+        android:hint="@string/etPlatform"
+        android:inputType="textPersonName" />
+
+    <EditText
+        android:id="@+id/txtName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:ems="10"
         android:hint="@string/etName"
         android:inputType="textPersonName" />
