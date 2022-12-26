@@ -16,6 +16,7 @@ public class AddAccountActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_account);
+        getSupportActionBar().hide();
 
         etPlatform = findViewById(R.id.txtPlatform);
         etName = findViewById(R.id.txtName);
