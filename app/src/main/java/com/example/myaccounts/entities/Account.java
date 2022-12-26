@@ -1,6 +1,6 @@
 package com.example.myaccounts.entities;
 
-public class Accounts {
+public class Account {
 
     private  int id;
     private  String platform;

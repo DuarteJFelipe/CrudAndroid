@@ -9,30 +9,28 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.myaccounts.R;
-import com.example.myaccounts.entities.Accounts;
+import com.example.myaccounts.entities.Account;
 
 import java.util.ArrayList;
 
 public class ListAccountsAdapter extends RecyclerView.Adapter<ListAccountsAdapter.AccountViewHolder> {
 
-    ArrayList<Accounts> listAccounts;
+    ArrayList<Account> listAccounts;
 
-    public ListAccountsAdapter(ArrayList<Accounts> listAccounts){
+    public ListAccountsAdapter(ArrayList<Account> listAccounts){
         this.listAccounts = listAccounts;
     }
 
     @NonNull
     @Override
     public AccountViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_account,null,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_account, parent,false);
         return new AccountViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull AccountViewHolder holder, int position) {
-        holder.tvPlatform.setText(listAccounts.get(position).getPlatform());
-        holder.tvName.setText(listAccounts.get(position).getName());
-        holder.tvPassword.setText(listAccounts.get(position).getPassword());
+        holder.bind(listAccounts.get(position));
     }
 
     @Override
@@ -40,17 +38,25 @@ public class ListAccountsAdapter extends RecyclerView.Adapter<ListAccountsAdapte
         return listAccounts.size();
     }
 
-    public class AccountViewHolder extends RecyclerView.ViewHolder {
+    public static class AccountViewHolder extends RecyclerView.ViewHolder {
 
-        TextView tvPlatform, tvName, tvPassword;
+        private final TextView tvPlatform;
+        private final TextView tvName;
+        private final TextView tvPassword;
 
         public AccountViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            tvPlatform = itemView.findViewById(R.id.tvName);
+            tvPlatform = itemView.findViewById(R.id.tvPlatform);
             tvName = itemView.findViewById(R.id.tvName);
             tvPassword = itemView.findViewById(R.id.tvPassword);
+        }
 
+        public void bind(Account account){
+            tvPlatform.setText(account.getPlatform());
+            tvName.setText(account.getName());
+            tvPassword.setText(account.getPassword());
         }
     }
+
 }

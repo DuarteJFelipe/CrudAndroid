@@ -40,8 +40,8 @@ public class AddAccountActivity extends AppCompatActivity {
     }
 
     private void clearInputs() {
+        etPlatform.setText("");
         etName.setText("");
         etPassword.setText("");
-        etPlatform.setText("");
     }
 }
