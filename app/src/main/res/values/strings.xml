@@ -3,6 +3,6 @@
     <string name="etName">Enter a name</string>
     <string name="etPassword">Enter a password</string>
     <string name="etPlatform">Enter a platform</string>
-    <string name="btnSubmit">Submit</string>
+    <string name="btnSubmit">Save</string>
     <string name="btnGoSubmit">New Account</string>
 </resources>

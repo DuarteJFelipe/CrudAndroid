@@ -57,4 +57,63 @@ public class DbAccount extends DbHelper {
 
         return listAccounts;
     }
+
+    public Account readAccounts(int id) {
+        SQLiteDatabase db = getWritableDatabase();
+
+        Account account = null;
+        Cursor cursorAccounts = null;
+
+        cursorAccounts = db.rawQuery("SELECT * FROM " + TABLE_ACCOUNT + " WHERE id = " + id + " LIMIT 1", null);
+
+        if (cursorAccounts.moveToFirst()) {
+            account = new Account();
+            account.setId(cursorAccounts.getInt(0));
+            account.setPlatform(cursorAccounts.getString(1));
+            account.setName(cursorAccounts.getString(2));
+            account.setPassword(cursorAccounts.getString(3));
+        }
+
+        cursorAccounts.close();
+
+        return account;
+    }
+
+    public boolean editAccount(int id,String platform, String name, String password) {
+
+        boolean valid = false;
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        try {
+            db.execSQL(" UPDATE " + TABLE_ACCOUNT + " SET platform = '"+ platform +"', name = '"+ name +"', password = '"+ password +"' WHERE id = '"+ id +"'");
+            valid = true;
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            valid = false;
+        }finally {
+            db.close();
+        }
+
+        return valid;
+    }
+
+    public  boolean deleteAccount(int id){
+
+        boolean valid = false;
+
+        SQLiteDatabase db = getWritableDatabase();
+
+        try {
+            db.execSQL("DELETE FROM " + TABLE_ACCOUNT + " WHERE id = '"+ id +"'");
+            valid = true;
+        } catch (Exception exc) {
+            exc.printStackTrace();
+            valid = false;
+        }finally {
+            db.close();
+        }
+
+        return valid;
+    }
 }
