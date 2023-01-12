@@ -4,6 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
+    android:paddingVertical="10dp"
     tools:context=".AddAccountActivity">
 
     <TextView
@@ -24,6 +25,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#9E9E9E"
-        android:textSize="18sp" />
+        android:textSize="15sp"
+        android:textStyle="italic"/>
 
 </LinearLayout>
